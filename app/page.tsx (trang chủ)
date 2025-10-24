@@ -1,0 +1,16 @@
+import Link from 'next/link'
+
+export default function Home() {
+  return (
+    <section>
+      <div className="bg-white rounded-lg shadow p-8">
+        <h1 className="text-3xl font-bold mb-2">Chuyên nghiệp • Minh bạch • Tận tâm</h1>
+        <p className="text-slate-600 mb-4">Chúng tôi cung cấp tư vấn pháp lý cho doanh nghiệp và cá nhân — cập nhật chính sách, soạn thảo hợp đồng, xử lý tranh chấp.</p>
+        <div className="flex gap-4">
+          <Link href="/services" className="px-4 py-2 bg-sky-600 text-white rounded">Dịch vụ</Link>
+          <Link href="/contact" className="px-4 py-2 border rounded">Yêu cầu tư vấn</Link>
+        </div>
+      </div>
+    </section>
+  )
+}
