@@ -1,22 +1,19 @@
-legalsite/
-├── app.py
-├── models.py
-├── forms.py
-├── requirements.txt
-├── init_db.py
-├── config.py
-├── static/
-│   ├── css/
-│   │   └── style.css
-│   └── images/
-├── templates/
-│   ├── base.html
-│   ├── index.html
-│   ├── about.html
-│   ├── services.html
-│   ├── news.html
-│   ├── contact.html
-│   ├── thanks.html
-│   └── admin.html
-└── instance/
-    └── legalsite.sqlite   # sẽ được tạo khi init
+/app
+  /globals.css
+  layout.tsx
+  page.tsx            -> trang chủ
+  about/page.tsx
+  team/page.tsx
+  services/page.tsx
+  news/page.tsx
+  contact/page.tsx
+/api
+  contact/route.ts    -> API route gửi email
+/components
+  Header.tsx
+  Footer.tsx
+  TeamCard.tsx
+  ServiceCard.tsx
+/data
+  team.json
+  services.json
