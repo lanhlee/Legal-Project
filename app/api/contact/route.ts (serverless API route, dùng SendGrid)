@@ -1,0 +1,29 @@
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import sgMail from '@sendgrid/mail'
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || '')
+
+export async function POST(req: NextRequest) {
+  try {
+    const data = await req.json()
+    const to = process.env.TO_EMAIL || process.env.SENDGRID_TO
+    const subject = `Yêu cầu tư vấn từ ${data.name || 'Khách'} - ${data.area || ''}`
+    const body = `
+      Họ tên: ${data.name}\n
+      Email: ${data.email}\n
+      Phone: ${data.phone}\n
+      Lĩnh vực: ${data.area}\n
+      Tin nhắn: ${data.message}\n
+    `
+    await sgMail.send({
+      to,
+      from: process.env.SENDGRID_FROM || 'no-reply@example.com',
+      subject,
+      text: body
+    })
+    return NextResponse.json({ok:true})
+  } catch (err:any) {
+    return NextResponse.json({ok:false, error: err.message ?? String(err)}, {status:500})
+  }
+}
